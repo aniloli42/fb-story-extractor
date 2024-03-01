@@ -2,9 +2,9 @@ import { Output, Photo, Video } from '../types/output.type'
 
 const VIDEO_KEY = 'unified_stories'
 
-export const extractFbViewSource = (parsingText: any) => {
+export const extractFbViewSource = (viewSource: string) => {
   const domParser = new DOMParser()
-  const doc = domParser.parseFromString(parsingText, 'text/html')
+  const doc = domParser.parseFromString(viewSource, 'text/html')
 
   const scriptElements = Array.from(doc.querySelectorAll('script'))
   const contentScript = scriptElements.find((e) => e.innerText.includes(VIDEO_KEY))
@@ -27,11 +27,11 @@ export const extractFbViewSource = (parsingText: any) => {
   const cleanedStories = removedString.slice(0, removedString.length - 8)
   const parsedContent = JSON.parse(cleanedStories)
 
-  const storiesMeta = parsedContent.flatMap((story: any) => extractStory(story))
+  const storiesMeta = parsedContent.flatMap((story: any) => extractStoryDetails(story))
   return storiesMeta as Output
 }
 
-const extractStory = (storyMeta: any): Photo | Video | [] => {
+const extractStoryDetails = (storyMeta: any): Photo | Video | [] => {
   const story = storyMeta['node']['attachments'][0]['media']
   const type = story['__typename']
   const storyId = story['id']

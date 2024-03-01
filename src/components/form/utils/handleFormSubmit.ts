@@ -13,7 +13,7 @@ export const handleSubmit = (
   const dom = formData.get('dom')
   if (!dom) return
 
-  const extractedResults = extractFbViewSource(dom)
+  const extractedResults = extractFbViewSource(dom.toString())
   if (extractedResults == null) return setResult([])
 
   setResult(extractedResults)
