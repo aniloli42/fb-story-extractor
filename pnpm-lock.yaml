@@ -55,6 +55,9 @@ devDependencies:
   vite:
     specifier: ^5.1.4
     version: 5.1.4(@types/node@20.11.24)
+  vite-plugin-radar:
+    specifier: ^0.9.3
+    version: 0.9.3(vite@5.1.4)
 
 packages:
 
@@ -2328,6 +2331,14 @@ packages:
 
   /util-deprecate@1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
+    dev: true
+
+  /vite-plugin-radar@0.9.3(vite@5.1.4):
+    resolution: {integrity: sha512-o/7F0gHQW9yUxpExXYwQLxFYOSxiWIPs3Uh24sg+wl5ikghzLKMQ2Xldak/rsT0o06rzdrAqP9+XSOwfCbwz2Q==}
+    peerDependencies:
+      vite: ^2.0.0 || ^3.0.0 || ^4.0.0 || ^5.0.0
+    dependencies:
+      vite: 5.1.4(@types/node@20.11.24)
     dev: true
 
   /vite@5.1.4(@types/node@20.11.24):
