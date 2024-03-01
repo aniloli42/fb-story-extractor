@@ -2,6 +2,7 @@ import { Output } from '../../types/output.type'
 import FormItemWrapper from './components/FormItemWrapper'
 import { useHandleViewSource } from './hooks/handleViewSource.hooks'
 import { handleSubmit } from './utils/handleFormSubmit'
+import { handleLinkClick } from './utils/handleLinkClick'
 
 type FormProps = { setResult: React.Dispatch<React.SetStateAction<Output>> }
 
@@ -23,7 +24,10 @@ const Form = ({ setResult }: FormProps) => {
 
       <FormItemWrapper>
         <label>View Source Link</label>
-        <p className="border border-gray-800 p-2 rounded select-all">
+        <p
+          className="border border-gray-800 p-2 rounded select-all"
+          onClick={() => handleLinkClick(viewSourceLink ?? '')}
+        >
           <span className="select-all peer break-words">{viewSourceLink}</span>
           <span className="peer-empty:visible invisible pointer-events-none  select-none text-gray-400">
             view source link will be auto generated here
