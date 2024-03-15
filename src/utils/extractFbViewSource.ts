@@ -1,4 +1,5 @@
 import { Output, Photo, Video } from '../types/output.type'
+import { showAlert } from './alert'
 
 const VIDEO_KEY = 'unified_stories'
 
@@ -21,7 +22,10 @@ export const extractFbViewSource = (viewSource: string) => {
 
   const storiesRegex = /unified_stories.*,"owner/g
   const matchText = JSON.stringify(parsed).match(storiesRegex)
-  if (matchText == null) return console.error('stories object not found')
+  if (matchText == null) {
+    showAlert('Error while parsing source content')
+    return console.error('stories object not found')
+  }
 
   const removedString = matchText[0].slice(26)
   const cleanedStories = removedString.slice(0, removedString.length - 8)
